@@ -11,7 +11,7 @@ app.MapGet("/scan/{IPRede}/ {PortaInicial}/{PortaFinal}", async context  =>
     process.UseShellExecute = false;
     process.WorkingDirectory = "/bin";
     process.FileName = "bash";
-    process.Arguments = $"/HOME/portscanner.sh {IPRede} {PortaInicial} {PortaFinal}";
+    process.Arguments = $"/$HOME/portscanner.sh {IPRede} {PortaInicial} {PortaFinal}";
 
     using (System.Diagnostics.Process cmd = System.Diagnostics.Process.Start(process)
     {
