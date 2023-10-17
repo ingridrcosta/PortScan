@@ -25,8 +25,8 @@ if [ ! -x "$0" ]; then
 fi
 
 
-Diretorio="$HOME/ScannerPort"
-GeradorLogs=$HOME/ScannerPort//log.txt
+Diretorio="/home/ScannerPort"
+GeradorLogs="/home/ScannerPort/log.txt"
 
 if [[ ! -d $Diretorio ]];
     then 
