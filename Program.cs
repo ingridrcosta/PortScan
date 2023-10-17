@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/scan/{IPRede}/ {PortaInicial}/{PortaFinal}", async context  =>
+app.MapGet("/scan/{IPRede}/{PortaInicial}/{PortaFinal}", async context  =>
 {
     var IPRede = context.Request.RouteValues["IPRede"];
     var PortaInicial = context.Request.RouteValues["PortaInicial"];
