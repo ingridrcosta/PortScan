@@ -18,7 +18,7 @@ app.MapGet("/scan/{IPRede}/{PortaInicial}/{PortaFinal}", async context  =>
         cmd.WaitForExit();
     }
 
-    string logContent = await System.IO.File.ReadAllTextAsync("/home/ScannerPort//log.txt");
+    string logContent = await System.IO.File.ReadAllTextAsync("/home/ScannerPort/log.txt");
 
     context.Response.ContetType = "text/plain";
     await context.Response.WriteAsync($"IP da Rede: {IPRede}. Portas de: {PortaInicial}. Ate: {PortaFinal}.\n");
