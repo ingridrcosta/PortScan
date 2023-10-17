@@ -16,7 +16,7 @@ app.MapGet("/scan/{IPRede}/ {PortaInicial}/{PortaFinal}", async context  =>
     using (System.Diagnostics.Process cmd = System.Diagnostics.Process.Start(process))
     {
         cmd.WaitForExit();
-    })
+    }
 
     string logContent = await System.IO.File.ReadAllTextAsync("$HOME/ScannerPort//log.txt");
 
