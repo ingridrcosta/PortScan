@@ -12,6 +12,7 @@ app.MapGet("/scan/{iPRede}/{portaInicial}/{portaFinal}", async context  =>
     process.WorkingDirectory = "/bin";
     process.FileName = "bash";
     process.Arguments = $"/home/ScannerPort/portscanner.sh {iPRede} {portaInicial} {portaFinal}";
+    process.RedirectStandardOutput = true;
 
     using (System.Diagnostics.Process cmd = System.Diagnostics.Process.Start(process))
     {
@@ -20,7 +21,7 @@ app.MapGet("/scan/{iPRede}/{portaInicial}/{portaFinal}", async context  =>
 
     string logContent = await System.IO.File.ReadAllTextAsync("/home/ScannerPort/log.txt");
 
-    context.Response.ContetType = "text/plain";
+    context.Response.ContentType = "text/plain";
     await context.Response.WriteAsync($"IP da Rede: {iPRede}. Portas de: {portaInicial}. Ate: {portaFinal}.\n");
     await context.Response.WriteAsync(logContent);
 });
