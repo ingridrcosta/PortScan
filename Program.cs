@@ -1,17 +1,17 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/scan/{IPRede}/{PortaInicial}/{PortaFinal}", async context  =>
+app.MapGet("/scan/{iPRede}/{portaInicial}/{portaFinal}", async context  =>
 {
-    var IPRede = context.Request.RouteValues["IPRede"];
-    var PortaInicial = context.Request.RouteValues["PortaInicial"];
-    var PortaFinal = context.Request.RouteValues["PortaFinal"];
+    var IPRede = context.Request.RouteValues["iPRede"];
+    var PortaInicial = context.Request.RouteValues["portaInicial"];
+    var PortaFinal = context.Request.RouteValues["portaFinal"];
 
     System.Diagnostics.ProcessStartInfo process = new System.Diagnostics.ProcessStartInfo();
     process.UseShellExecute = false;
     process.WorkingDirectory = "/bin";
     process.FileName = "bash";
-    process.Arguments = $"/home/ScannerPort/portscanner.sh {IPRede} {PortaInicial} {PortaFinal}";
+    process.Arguments = $"/home/ScannerPort/portscanner.sh {iPRede} {portaInicial} {portaFinal}";
 
     using (System.Diagnostics.Process cmd = System.Diagnostics.Process.Start(process))
     {
@@ -21,7 +21,7 @@ app.MapGet("/scan/{IPRede}/{PortaInicial}/{PortaFinal}", async context  =>
     string logContent = await System.IO.File.ReadAllTextAsync("/home/ScannerPort/log.txt");
 
     context.Response.ContetType = "text/plain";
-    await context.Response.WriteAsync($"IP da Rede: {IPRede}. Portas de: {PortaInicial}. Ate: {PortaFinal}.\n");
+    await context.Response.WriteAsync($"IP da Rede: {iPRede}. Portas de: {portaInicial}. Ate: {portaFinal}.\n");
     await context.Response.WriteAsync(logContent);
 });
 
