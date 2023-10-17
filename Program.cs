@@ -3,9 +3,9 @@ var app = builder.Build();
 
 app.MapGet("/scan/{iPRede}/{portaInicial}/{portaFinal}", async context  =>
 {
-    var IPRede = context.Request.RouteValues["iPRede"];
-    var PortaInicial = context.Request.RouteValues["portaInicial"];
-    var PortaFinal = context.Request.RouteValues["portaFinal"];
+    var iPRede = context.Request.RouteValues["iPRede"];
+    var portaInicial = context.Request.RouteValues["portaInicial"];
+    var portaFinal = context.Request.RouteValues["portaFinal"];
 
     System.Diagnostics.ProcessStartInfo process = new System.Diagnostics.ProcessStartInfo();
     process.UseShellExecute = false;
