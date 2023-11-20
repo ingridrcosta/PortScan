@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Scanner</title>
+</head>
+<body>
+    
+    <div class="Cabecalho">
+        <h1>Port Scanner</h1>
+        <hr>
+    </div>
+
+    <div class="Menu">
+        <!---ainda a ser implementado-->
+    </div>
+
+    <div class="NmapButton">
+      <p>Escolha qual método será utilizado.</p>  
+        
+            <input type="radio" id="NmapButton" name="metodo" value="Nmap" placeholder="NmapButtonApi">
+            <label for="Nmap">Nmap</label>
+            <input type="radio" id="NetCatButton" name="metodo" value="NetCat">
+            <label for="NetCat">NetCat</label><br>
+        
+        <hr>
+    </div>
+
+    <div class="IPProcurar">
+        
+        <label for="IPProcurar">Pesquisar: </label>
+        <input type="text" name="RangeIP" id="RangeIP" value="Range IP">
+        <input type="text" name="RangePortas" id="RangePortas" value="Range Portas">
+        <input type="button" name="NmapPesquisar" id="NmapButtonPesquisar" value="Pesquisar">
+        <input type="reset" name="NmapLimpar" id="NmapButtonLimpar" value="Limpar">
+    
+    </div>
+
+    <script>
+        document.getElementById("NmapButtonPesquisar").addEventListener("click", function() 
+        {
+            var RangeIP=document.getElementById("RangeIP").value;
+            var RangePortas=document.getElementById("RangePortas").value;
+            
+            var URL="http://localhost:5154/scan/"+RangeIP+"/"+RangePortas;
+            //var URL="https:fast.com/";
+    
+
+            window.location.href=URL;
+        });
+
+    </script>
+
+   
+
+
+
+    <div class="Descricao">
+        <h2>Descrição</h2>
+        <p> Port Scanner é uma ferramenta com objetivo de identificar portas (TCP ou UDP)
+            que estão abertas ou fechadas. 
+            Esta ferramenta é utilizada por profissionais da parte de segurança ou administradores
+            de redes, por identificar vulnerabilidades na rede e prevenir ataques.
+        </p>
+        <hr>
+    </div>
+
+    <div class="Comandos">
+        <h2>Comandos</h2>
+        <p>
+            Para realizar uma pesquisa no campo IP digite: 
+            O range de IP: 192.168.1.1 e o ultimo Range: 24 (192.168.1.24).
+        </p>
+    </div>
+</body>
+</html>
