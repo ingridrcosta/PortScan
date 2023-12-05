@@ -23,8 +23,8 @@ if [ ! -x "$0" ]; then
 fi
 
 
-Diretorio="/home/lain/PUC/NetCatScanner/scan/" 
-GeradorLogsNC="/home/lain/PUC/NetCatScanner/scan/log.txt"
+Diretorio="$SEU DIRETORIO" 
+GeradorLogsNC="$SEU DIRETORIO/log.txt"
 
 exec 3>&1 4>&2 
 exec > "$GeradorLogsNC" 2>&1 
