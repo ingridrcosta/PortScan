@@ -4,74 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Port Scanner</title>
+
 </head>
+<style>
+        body {
+            font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+            background-color: #cad7fda4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            
+        }
+
+        .Cabeça {
+            background:linear-gradient(#91a2d8f9, #d697ee, #2bbdca);
+        
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(15, 13, 13, 0.2);
+            width: 300px;
+            padding: 90px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .botao {
+            margin: 20px 0;
+            
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #2bbdca;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 1%;
+            
+
+        }
+
+        button {
+            background-color: #b700ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            text-align: justify;
+            text-decoration-color: #3000b3;
+        }
+
+        button:hover {
+            background-color: #9200b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+
 <body>
-    
-    <div class="Cabecalho">
+
+    <div class="Cabeça">
         <h1>Port Scanner</h1>
-        <hr>
+        <div class="botao">
+            <label for="Titulo">Endereço de IP:</label><br>
+            <input type="text" name="RangeInicial" id="RangeInicial" placeholder="Ex.: 192.168.1.1">
+            <input type="text" name="Mascara" id="Mascara" placeholder="Máscara">
+            <input type="text" name="PortaInicial" id="PortaInicial" placeholder="Porta Inicial">
+            <input type="text" name="PortaFinal" id="PortaFinal" placeholder="Porta Final">
+        </div>
+        <button type="button" id="NetCat">NetCat </button>
+        <a href="/PortScannerBackup/index.html"><button type="button" id="Nmap">Nmap</button></a>
     </div>
 
-    <div class="Menu">
-        <!---ainda a ser implementado-->
-    </div>
-
-    <div class="NmapButton">
-      <p>Escolha qual método será utilizado.</p>  
-        
-            <input type="radio" id="NmapButton" name="metodo" value="Nmap" placeholder="NmapButtonApi">
-            <label for="Nmap">Nmap</label>
-            <input type="radio" id="NetCatButton" name="metodo" value="NetCat">
-            <label for="NetCat">NetCat</label><br>
-        
-        <hr>
-    </div>
-
-    <div class="IPProcurar">
-        
-        <label for="IPProcurar">Pesquisar: </label>
-        <input type="text" name="RangeIP" id="RangeIP" value="Range IP">
-        <input type="text" name="RangePortas" id="RangePortas" value="Range Portas">
-        <input type="button" name="NmapPesquisar" id="NmapButtonPesquisar" value="Pesquisar">
-        <input type="reset" name="NmapLimpar" id="NmapButtonLimpar" value="Limpar">
-    
-    </div>
 
     <script>
-        document.getElementById("NmapButtonPesquisar").addEventListener("click", function() 
+        document.getElementById("NetCat").addEventListener("click", function()
         {
-            var RangeIP=document.getElementById("RangeIP").value;
-            var RangePortas=document.getElementById("RangePortas").value;
-            
-            var URL="http://localhost:5154/scan/"+RangeIP+"/"+RangePortas;
-            //var URL="https:fast.com/";
-    
-
-            window.location.href=URL;
+            var RangeNetCatIp = document.getElementById("RangeInicial").value;
+            var RangeNetCatMascara = document.getElementById("Mascara").value;
+            var RangeNetCatPortaInicial = document.getElementById("PortaInicial").value;
+            var RangeNetCatPortaFinal = document.getElementById("PortaFinal").value;
+            var URLNMAP ="http://localhost:5185/scan/"+RangeNetCatIp+"/"+RangeNetCatMascara+"/"+RangeNetCatPortaInicial+"/"+RangeNetCatPortaFinal;
+            window.location.href=URLNMAP;
         });
-
     </script>
-
-   
-
-
-
-    <div class="Descricao">
-        <h2>Descrição</h2>
-        <p> Port Scanner é uma ferramenta com objetivo de identificar portas (TCP ou UDP)
-            que estão abertas ou fechadas. 
-            Esta ferramenta é utilizada por profissionais da parte de segurança ou administradores
-            de redes, por identificar vulnerabilidades na rede e prevenir ataques.
-        </p>
-        <hr>
-    </div>
-
-    <div class="Comandos">
-        <h2>Comandos</h2>
-        <p>
-            Para realizar uma pesquisa no campo IP digite: 
-            O range de IP: 192.168.1.1 e o ultimo Range: 24 (192.168.1.24).
-        </p>
-    </div>
 </body>
 </html>
