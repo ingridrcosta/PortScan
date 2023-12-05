@@ -13,7 +13,7 @@ app.MapGet("/scan/{ipRede}/{mascara}/{inicio}/{fim}", async context =>
     process.UseShellExecute = false;
     process.WorkingDirectory = "/bin";
     process.FileName = "bash";
-    process.Arguments = $"/home/lain/PUC/NetCatScanner/portscanner.sh {ipRede} {mascaraIP} {portaInicio} {portaFim}";
+    process.Arguments = $"SEU DIRETORIO + SCRIPT {ipRede} {mascaraIP} {portaInicio} {portaFim}";
     process.RedirectStandardOutput = true;
 
     using (System.Diagnostics.Process cmd = System.Diagnostics.Process.Start(process))
