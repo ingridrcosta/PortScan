@@ -65,7 +65,7 @@ ip_saida=$(echo "$BlocoDeIP"/"$Mascara" | awk -F '[.]' '{print $1"."$2"."$3"."}'
 echo "" >> "$GeradorLogsNC"
 
 if [[ $Mascara == 24 ]]; then
-for octeto in $(seq 1 255); do 
+for octeto in $(seq 1 254); do 
         bloco_ip="$ip_saida$octeto"
         for mascara in $(seq $Mascara 32);do
                 for port in $(seq $Porta_Inicial $Porta_Final);do
